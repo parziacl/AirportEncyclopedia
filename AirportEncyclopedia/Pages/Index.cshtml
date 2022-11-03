@@ -1,0 +1,49 @@
+﻿@page
+@using AirportType
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+    List<AirportSizeAndType> LandingSites = (List<AirportSizeAndType>)ViewData["landingsite"];
+}
+
+<div class="text-center">
+    <h1 class="display-4">Airport data</h1>
+    <table>
+        <tr>
+            <th>Continent</th>
+            <th>Coordinates</th>
+            <th>Elevation- in Feet</th>
+            <th>GPS Code</th>
+            <th>Iata Code</th>
+            <th>Ident</th>
+            <th>Country Code</th>
+            <th>Region</th>
+            <th>Local Code</th>
+            <th>Municapality</th>
+            <th>Landing Site Name</th>
+            <th>Landing Site Type</th>
+        </tr>
+        @{
+            foreach (AirportSizeAndType landingsite in LandingSites)
+            {
+                    <tr>
+                        <td></td>
+                    <td>@landingsite.Continent</td>
+                    <td>@landingsite.Coordinates</td>
+                    <td>@landingsite.ElevationFt</td>
+                    <td>@landingsite.GpsCode</td>
+                    <td>@landingsite.IataCode</td>
+                    <td>@landingsite.Ident</td>
+                    <td>@landingsite.IsoCountry</td>
+                    <td>@landingsite.IsoRegion</td>
+                    <td>@landingsite.Municipality</td>
+                    <td>@landingsite.Name</td>
+                    <td>@landingsite.Type</td>
+                </tr>
+            }
+        }
+    </table>
+</div>
+
+ 
+
