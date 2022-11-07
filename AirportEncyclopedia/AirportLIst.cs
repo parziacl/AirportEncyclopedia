@@ -15,7 +15,10 @@ namespace AirportType
     using Newtonsoft.Json;
     using Newtonsoft.Json.Converters;
 
-    public partial class AirportSizeAndType
+
+
+    public partial class AirportList
+
     {
         [JsonProperty("continent")]
         public string Continent { get; set; }
@@ -53,25 +56,28 @@ namespace AirportType
         [JsonProperty("type")]
         public string Type { get; set; }
     }
-    public partial class AirportSizeAndType
-    {
-        public static List<AirportSizeAndType> FromJson(string json) => JsonConvert.DeserializeObject<List<AirportSizeAndType>>(json, AirportType.Converter.Settings);
+    public partial class AirportList
+
+    { 
+        public static List<AirportList> FromJson(string json) => JsonConvert.DeserializeObject<List<AirportList>>(json, AirportType.Converter.Settings);
     }
 
     public static class Serialize
     {
-        public static string ToJson(this List<AirportSizeAndType> self) => JsonConvert.SerializeObject(self, AirportType.Converter.Settings);
+        public static string ToJson(this List<AirportList> self) => JsonConvert.SerializeObject(self, AirportType.Converter.Settings);
     }
 
     internal static class Converter
     {
         public static readonly JsonSerializerSettings Settings = new JsonSerializerSettings
         {
+            NullValueHandling = NullValueHandling.Ignore,
             MetadataPropertyHandling = MetadataPropertyHandling.Ignore,
             DateParseHandling = DateParseHandling.None,
             Converters =
             {
                 new IsoDateTimeConverter { DateTimeStyles = DateTimeStyles.AssumeUniversal }
+                
             },
         };
     }

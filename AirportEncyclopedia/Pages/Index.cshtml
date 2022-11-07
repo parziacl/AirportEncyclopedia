@@ -3,7 +3,7 @@
 @model IndexModel
 @{
     ViewData["Title"] = "Home page";
-    List<AirportSizeAndType> LandingSites = (List<AirportSizeAndType>)ViewData["landingsite"];
+    List<AirportList> LandingSites = (List<AirportList>)ViewData["landingsite"];
 }
 
 <div class="text-center">
@@ -24,7 +24,7 @@
             <th>Landing Site Type</th>
         </tr>
         @{
-            foreach (AirportSizeAndType landingsite in LandingSites)
+            foreach (AirportList landingsite in LandingSites)
             {
                     <tr>
                         <td></td>
